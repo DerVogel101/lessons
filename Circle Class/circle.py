@@ -9,7 +9,6 @@
 # - A method should increase the radius by a factor.
 # - Additional: The distance between two circles' outer edges should be able to be calculated.
 
-
 import math
 
 
