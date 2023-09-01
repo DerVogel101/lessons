@@ -29,6 +29,15 @@ class Circle:
     def distance(self, circle2):
         return math.sqrt((circle2.cordinate[0]-self.cordinate[0])**2 + (circle2.cordinate[1]-self.cordinate[1])**2) - (circle2.radius + self.radius)
 
+    def __str__(self):  # not a task
+        return f"Circle with radius {self.radius} and cordinate {self.cordinate}"
+
+    def __repr__(self):  # not a task
+        return f"Circle({self.cordinate}, {self.radius})"
+
+    def __eq__(self, other):  # not a task
+        return self.cordinate == other.cordinate and self.radius == other.radius
+
 
 if __name__ == "__main__":
     my_circle: Circle = Circle([20, 20], 5)
