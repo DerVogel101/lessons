@@ -26,8 +26,9 @@ class Circle:
     def size_multiplier(self, multiplier):
         self.radius *= multiplier
 
-    def distance(self, circle2):
-        return math.sqrt((circle2.cordinate[0]-self.cordinate[0])**2 + (circle2.cordinate[1]-self.cordinate[1])**2) - (circle2.radius + self.radius)
+    def distance(self, other):
+        return math.sqrt((other.cordinate[0] - self.cordinate[0]) ** 2 + (other.cordinate[1] - self.cordinate[1]) ** 2) - \
+            (other.radius + self.radius)
 
     def __str__(self):  # not a task
         return f"Circle with radius {self.radius} and cordinate {self.cordinate}"
@@ -41,6 +42,7 @@ class Circle:
 
 if __name__ == "__main__":
     my_circle: Circle = Circle([20, 20], 5)
+    print(my_circle)
     print(f"Umfang: {my_circle.get_circumference()}")
     print(f"Fläche: {my_circle.get_area()}")
     my_circle.size_multiplier((r_mul := 2))
