@@ -4,6 +4,7 @@
 # Task:
 # Convert the functions from a previous task(functions.py) to a class.
 
+
 class Fract:
     def __init__(self, nominator, denominator):
         self.fract = [nominator, denominator]
@@ -74,4 +75,4 @@ class Fract:
         return {"nominator": self.nominator, "denominator": self.denominator}
 
     def __repr__(self):
-        return f"Frac({self.nominator}, {self.denominator})"
+        return f"Fract({self.nominator}, {self.denominator})"
