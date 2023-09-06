@@ -4,6 +4,7 @@
 # Task:
 # Convert the functions from a previous task(functions.py) to a class.
 
+from typing import Self
 
 class Fract:
     def __init__(self, nominator, denominator):
@@ -58,21 +59,26 @@ class Fract:
     def __iter__(self):
         return iter(self.fract)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> int:
         return self.fract[index]
 
-    def __float__(self):
+    def __float__(self) -> float:
+        """Returns the decimal value of the fraction."""
         return self.nominator / self.denominator
 
-    def __int__(self):
-        # output could be incorrect
+    def __int__(self) -> int:
+        """Returns the integer part of the fraction, this cuts off the decimal part."""
         return self.nominator // self.denominator
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.nominator == other[0] and self.denominator == other[1]
 
-    def __dict__(self):
-        return {"nominator": self.nominator, "denominator": self.denominator}
+    def __dict__(self) -> dict[str, int]:
+        return {"nominator": self.nominator, "denominator": self.denominator, "decimal": float(self)}
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Fract({self.nominator}, {self.denominator})"
+
+    #@classmethod
+    #def from_decimal(cls, decimal: float) -> Self:
+
