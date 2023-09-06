@@ -82,3 +82,7 @@ class Fract:
     #@classmethod
     #def from_decimal(cls, decimal: float) -> Self:
 
+
+a = Fract(1, 2)
+b = Fract(2, 3)
+print(list(a * b))
