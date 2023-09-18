@@ -18,7 +18,7 @@ This method should append a new element to the queue.
 
 ## Solutions
 The content of the files "1st solution.py" and "2nd solution.py" are Python scripts that define three classes: `AbstractQueue`, `LifoQueue`, and `FifoQueue`.
-They bot include a test case that creates a queue, adds some elements to it, and pops some elements from it.
+They bot include a test case that creates a queue, adds some elements to it, and pops some elements from it.\
 `python 1st_solution.py` and `python 2nd_solution.py` should print the following output:
 > Elements = [1, 2, 3]\
 > LIFO:\
