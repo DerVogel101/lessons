@@ -59,3 +59,9 @@ Here's a brief description of each class in both solutions:
 - `FifoQueue`: This class also inherits from `AbstractQueue` with `0` as index, representing a First-In-First-Out (FIFO) queue.
 
 The main difference between these two solutions is how they implement LIFO and FIFO operations. The first solution uses separate classes with different implementations for popping elements, while the second solution uses a common implementation in the base class with different indices for LIFO and FIFO operations.
+
+### 3rd Solution
+
+This solution is a modification of the second solution. It doesn't use the `__init__` method in the `LifoQueue` and `FifoQueue` classes. \
+Instead, it uses the Constant `INDEX` that is getting read in the `AbstractQueue` class. This solution is more efficient because it doesn't redifine the `__init__` method in the child classes.\
+However, it's not as readable as the second solution and The `AbstractQueue` class is can no longer be used as a standalone class.
