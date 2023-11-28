@@ -1,5 +1,5 @@
 import flet as ft
-from flet import Page, Text, TextField, ElevatedButton
+from flet import Page, TextField
 
 
 def main(page: Page):
@@ -9,6 +9,17 @@ def main(page: Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = ft.ThemeMode.LIGHT
     operation = "add"  # Global variable for the operation
+
+    def theme_changed(e):
+        page.theme_mode = (
+            ft.ThemeMode.DARK
+            if page.theme_mode == ft.ThemeMode.LIGHT
+            else ft.ThemeMode.LIGHT
+        )
+        theme_switch.label = (
+            "Light theme" if page.theme_mode == ft.ThemeMode.LIGHT else "Dark theme"
+        )
+        page.update()
 
     def toggle_switches_states(prev_dict):
         """
@@ -79,6 +90,8 @@ def main(page: Page):
         finally:
             page.update()
 
+    theme_switch = ft.Switch(label="Light theme", on_change=theme_changed)
+
     first_number = TextField(
         label="First Number",
         on_change=input_handler)
@@ -121,56 +134,70 @@ def main(page: Page):
         keyboard_type=ft.KeyboardType.MULTILINE
     )
     page.add(
-        ft.Column(
-            [
-                ft.Row(
-                    [
-                        ft.Container(
-                            content=first_number,
-                            margin=10,
-                            padding=10,
-                            alignment=ft.alignment.center,
-                            width=150,
-                            height=150,
-                            border_radius=10
-                        ),
-                        ft.Column(
-                            [
-                                ft.Row([switch_icons["add"], switches["add"]]),
-                                ft.Row([switch_icons["sub"], switches["sub"]]),
-                                ft.Row([switch_icons["mul"], switches["mul"]]),
-                                ft.Row([switch_icons["div"], switches["div"]]),
-                            ]
-                        ),
-                        ft.Container(
-                            content=second_number,
-                            margin=10,
-                            padding=10,
-                            alignment=ft.alignment.center,
-                            width=150,
-                            height=150,
-                            border_radius=10
-                        ),
+            ft.Column(
+                [
+                    ft.Row(
+                        [
+                            ft.Container(
+                                content=first_number,
+                                margin=10,
+                                padding=10,
+                                alignment=ft.alignment.center,
+                                width=150,
+                                height=150,
+                                border_radius=10
+                            ),
+                            ft.Column(
+                                [
+                                    ft.Row([switch_icons["add"], switches["add"]]),
+                                    ft.Row([switch_icons["sub"], switches["sub"]]),
+                                    ft.Row([switch_icons["mul"], switches["mul"]]),
+                                    ft.Row([switch_icons["div"], switches["div"]]),
+                                ]
+                            ),
+                            ft.Container(
+                                content=second_number,
+                                margin=10,
+                                padding=10,
+                                alignment=ft.alignment.center,
+                                width=150,
+                                height=150,
+                                border_radius=10
+                            ),
 
-                    ],
-                    alignment=ft.MainAxisAlignment.CENTER,
-                ),
-                ft.Row(
-                    [
-                        ft.Container(
-                            content=output_field,
-                            margin=10,
-                            padding=10,
-                            alignment=ft.alignment.top_center,
-                            width=350,
-                            height=100,
-                            border_radius=10
-                        ),
-                    ],
-                    alignment=ft.MainAxisAlignment.CENTER,
-                ),
-            ]
-        ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                    ),
+                    ft.Row(
+                        [
+                            ft.Container(
+                                content=output_field,
+                                margin=10,
+                                padding=10,
+                                alignment=ft.alignment.top_center,
+                                width=350,
+                                height=100,
+                                border_radius=10
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                    ),
+                    ft.Row(
+                        [
+                            ft.Container(
+                                content=theme_switch,
+                                margin=10,
+                                padding=10,
+                                alignment=ft.alignment.center,
+                                width=150,
+                                height=50,
+                                border_radius=10
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.START
+                    )
+                ]
+            ),
     )
 
 
