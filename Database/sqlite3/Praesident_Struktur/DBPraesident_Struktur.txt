@@ -1,0 +1,14 @@
+# Struktur der Tabelle Peesident
+
++------------+-------------+------+-----+------------+-------+
+| Field      | Type        | Null | Key | Default    | Extra |
++------------+-------------+------+-----+------------+-------+
+| last_name  | varchar(15) |      | PRI |            |       |
+| first_name | varchar(15) |      | PRI |            |       |
+| suffix     | varchar(5)  | YES  |     | NULL       |       |
+| city       | varchar(20) |      |     |            |       |
+| state      | char(2)     |      |     |            |       |
+| birth      | date        |      |     | 0000-00-00 |       |
+| death      | date        | YES  |     | NULL       |       |
++------------+-------------+------+-----+------------+-------+
+
