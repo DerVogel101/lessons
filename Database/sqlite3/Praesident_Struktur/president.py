@@ -1,6 +1,7 @@
 import sqlite3
 from contextlib import closing
 from pprint import pprint
+import json
 from datetime import datetime
 
 with closing(sqlite3.connect("president.db3")) as connection:
@@ -153,13 +154,13 @@ with closing(sqlite3.connect("president.db3")) as connection:
         #     """).fetchall())
 
         # 27. Show the number of presidents per state sorted by frequency for states with more than one president
-        pprint(cursor.execute("""
-            SELECT state, COUNT(state) as count
-            FROM president
-            GROUP BY state
-            HAVING count > 1
-            ORDER BY count DESC
-            """).fetchall())
+        # pprint(cursor.execute("""
+        #     SELECT state, COUNT(state) as count
+        #     FROM president
+        #     GROUP BY state
+        #     HAVING count > 1
+        #     ORDER BY count DESC
+        #     """).fetchall())
 
         # 28. Which state has produced the most presidents?
         # pprint(cursor.execute("""
@@ -168,3 +169,9 @@ with closing(sqlite3.connect("president.db3")) as connection:
         #             GROUP BY state
         #             ORDER BY count DESC LIMIT 1
         #             """).fetchall())
+
+        cursor.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT, email TEXT)")
+        cursor.execute("INSERT INTO user (name, email) VALUES ('John Doe', 'john@doe.com')")
+        cursor.execute("INSERT INTO user (name, email) VALUES ('Jane Doe', 'jane@doe.com')")
+
+        pprint(cursor.execute("SELECT * FROM user").fetchall())
