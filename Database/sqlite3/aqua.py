@@ -4,8 +4,6 @@ from contextlib import closing
 with closing(sqlite3.connect("aquarium.db")) as connection:
     with closing(connection.cursor()) as cursor:
         print(connection.total_changes)
-
-        cursor = connection.cursor()
         cursor.execute("CREATE TABLE IF NOT EXISTS fish (name TEXT, species TEXT, tank_number INTEGER)")
 
         cursor.execute("INSERT INTO fish VALUES ('Sammy', 'shark', 1)")
